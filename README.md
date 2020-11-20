@@ -1,24 +1,67 @@
-# README
+## **Passo a passo para rodar o projeto em localhost**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**1- Primeiro passo é colonar o projeto**
 
-Things you may want to cover:
+```bash
+git clone git@github.com:igorcb/calendar.git
+```
 
-* Ruby version
+**2- Entrar na pasta do projeto**
 
-* System dependencies
+```bash
+cd calendar
+```
 
-* Configuration
+**3 - Configurar Banco de Dados, abara o arquivo config/database.yml, observe que o username e password está vindo de um arquivo de credênciais,**
+**então vamos editar nossa credencial com o comando**
 
-* Database creation
+```bash
+EDITOR='code --wait' 
+```
 
-* Database initialization
+**Pode acontecer de ser criado uma nova chave master.key e vc não abrir o editor, então vc deve apagar o config/master.key e config/credentials.yml.enc**
 
-* How to run the test suite
+```bash
+rm config/master.key
+rm config/credentials.yml.enc
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+**4 - Vamos configurar o username e password no modo de desenvolvimento e test, coloque esse conteúdo e mude para o ser o username e password do seu**
+**banco de dados.**
 
-* Deployment instructions
+```ruby
+development:
+  postgres_username: seuusuario
+  postgres_password: suasenha
 
-* ...
+test:
+  postgres_username: seuusuario
+  postgres_password: suasenha
+
+```
+
+**5 - Vamos instalar as gems**
+
+```bash
+bundle install
+```
+
+**6 - Rode o comando yarn para checar as dependèncias**
+
+```bash
+yarn install --check-files
+```
+
+**7 - Agora vamos criar o banco de dados e gerar as migrações**
+
+```bash
+rails db:create && rails db:migrate
+```
+
+**9 - Finalmente vamos subir o servidor local**
+
+```bash
+rails s
+```
+
+**Visite a url localhost:3000**
