@@ -1,3 +1,6 @@
+#### **Visite o projeto de demonstração
+https://calendar-simple.herokuapp.com/
+
 ## **Passo a passo para rodar o projeto em localhost**
 
 **1- Primeiro passo é colonar o projeto**
