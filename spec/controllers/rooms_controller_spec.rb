@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe RoomsController, type: :controller do
-  
+  login_user
   context "GET #index" do
     let!(:rooms) { create_list(:room, 5) }
     let(:room_nil) { nil }

@@ -9,13 +9,6 @@ end
 describe BetweenDateValidator do
   subject { Validatable.new }
 
-  context "when time between 08:00 to 18:00" do
-    before { subject.date = Time.parse("#{Date.current} 09:00") }
-    it "should be valid" do
-      expect(subject.valid?).to be_truthy
-    end
-  end
-
   context "when time not between 08:00 to 18:00" do
     before { subject.date = Time.parse("#{Date.current} 07:00") }
     it "should be valid" do
@@ -28,4 +21,13 @@ describe BetweenDateValidator do
     end
   end  
   
+  context "when time between 08:00 to 18:00" do
+    before { subject.date = Time.parse("#{Date.current} 09:00") }
+
+    it "should be valid" do
+      subject.date = Time.parse("#{Date.current} 09:00")
+      expect(subject.valid?).to be_truthy
+    end
+  end
+
 end

@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe MeetingsController, type: :controller do
-  
+  login_user 
+    
   context "GET #new" do
+    
     let!(:room) {create(:room)}
 
     it "should success and render to new page" do
@@ -19,6 +21,7 @@ RSpec.describe MeetingsController, type: :controller do
   end
 
   context "POST #create" do
+
     let!(:user) {create(:user)}
     let!(:room) {create(:room)}
     let!(:params) {
