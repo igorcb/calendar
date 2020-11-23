@@ -1,0 +1,46 @@
+<%= form_for([@room, @meeting]) do |f| %>
+
+  <% if @meeting.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
+    <ul>
+      <% @meeting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="field">
+    <label for="#{@room.name}"><%= @room.name %></label>
+  </div>
+  <hr>
+  <div class="field">
+    <%= f.label :name, class: 'label'  %>
+    <div class="control">
+      <%= f.text_field :name, class: "input"  %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_date, class: 'label'  %>
+    <div class="control">
+      <%= f.datetime_local_field :start_date, class: "input", :id => "datepicker" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_date, class: 'label'  %>
+    <div class="control">
+      <%= f.datetime_local_field :end_date, class: "input", :id => "datepicker" %>
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <%= f.submit class: 'button is-primary' %>
+      <%= link_to 'Back', room_path(@room), class: 'button' %>
+    </div>
+  </div>
+
+<% end %>

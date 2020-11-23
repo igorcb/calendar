@@ -2,20 +2,25 @@ class MeetingsController < ApplicationController
   before_action :set_meeting, only: [:show, :update, :edit, :destroy]
     
   def index
-    @mettings = Meeting.all
+    @meetings = Meeting.all
   end
 
   def show; end
 
   def new 
-    @meeting = Meeting.new
+    #@meeting = Meeting.new
+    @room = Room.find(params[:room_id])
+    @meeting = @room.meetings.build
   end
 
   def create
-    @meeting = Meeting.new(meeting_params)
+    @room = Room.find(params[:room_id])
+    @room.update(status: :occuped)
+    @meeting = @room.meetings.new(meeting_params)
+    @meeting.user = current_user
     if @meeting.save
       flash[:notice] = "Meeting create successfull."
-      redirect_to action: :show, id: @meeting.id
+      redirect_to room_path id: @room.id
     else
       render :new
     end

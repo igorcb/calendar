@@ -30,4 +30,13 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        meeting:
+          attributes:
+            start_date:
+              between_date: "time must be between 08:00 and 18:00"
+            end_date:
+              between_date: "time must be between 08:00 and 18:00"
+      

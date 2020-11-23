@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'New Room', new_room_path, class: "button is-link is-small" %>
+
+<table class="table">
+  <thead>
+    <th>Rooms</th>
+    <th collspan=3></th>
+  </thead>
+
+  <tbody>
+    
+      <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.name %></td>
+        <td><%= link_to 'Show', room, class: "button is-warning is-small" %></td>
+        <td><%= link_to 'Edit', edit_room_path(room), class: "button is-info is-small" %></td>
+        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger is-small" %></td>
+         </tr>
+      <% end %>
+      
+   
+  </tbody>
+</table>

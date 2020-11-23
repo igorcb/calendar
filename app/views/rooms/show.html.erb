@@ -1,0 +1,23 @@
+<p>
+  <strong>Name:</strong>
+  <%= @room.name %> 
+</p>
+
+<%= link_to 'Edit', edit_room_path(@room), class: "button is-link is-small" %> |
+<%= link_to 'Back', rooms_path, class: "button is-ghost is-small" %>
+
+
+<%= month_calendar(events: @room.meetings, starts_at: Date.today.day) do |date, meetings| %>
+  <%= date.day %>
+  <p>
+    <%= link_to 'Reservar', new_room_meeting_path(@room), class: 'button is-primary' if meetings.empty? %> 
+  </p>
+
+  <% meetings.each do |meeting| %>
+    <div>
+      <p>User</p>
+      <%= meeting.start_date.strftime(" de %H:%M") %> as <%= meeting.end_date.strftime("%H:%M") %>
+      <%#= link_to room_meeting.name, meeting %>
+    </div>
+  <% end %>
+<% end %> 
